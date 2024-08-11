@@ -1,28 +1,26 @@
-const Hello = ({ name, age }) => {
-  const bornYear = () => new Date().getFullYear() - age
-
-  return (
-    <div>
-      <p>
-        Hello {name}, you are {age} years old
-      </p>
-      <p>So you were probably born in {bornYear()}</p>
-    </div>
-  )
-}
+import { useState } from 'react'
 
 const App = () => {
-  const name = 'Peter'
-  const age = 10
+  const [value, setValue] = useState(10)
 
+  const hello = () => {
+    const handler = () => console.log('hello world')
+    return handler
+  }
+
+
+  const handleClick = () => {
+    console.log('clicked the button')
+    setValue(0)
+  }
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
-      <Hello name='Rashmika' age={22} />
+      {value}
+      <br />
+      <button onClick={hello()}>button</button>
+      <button onClick={() => setValue(value+1)}>plusOne</button>
+      <button onClick={() => setValue(value-1)}>minusOne</button>
     </div>
   )
 }
-
 export default App
