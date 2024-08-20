@@ -1,26 +1,14 @@
-import { useState } from 'react'
-
-const App = () => {
-  const [value, setValue] = useState(10)
-
-  const hello = () => {
-    const handler = () => console.log('hello world')
-    return handler
-  }
-
-
-  const handleClick = () => {
-    console.log('clicked the button')
-    setValue(0)
-  }
+const App = (props) => {
+  const { notes } = props
+  
   return (
     <div>
-      {value}
-      <br />
-      <button onClick={hello()}>button</button>
-      <button onClick={() => setValue(value+1)}>plusOne</button>
-      <button onClick={() => setValue(value-1)}>minusOne</button>
+      <h1>Notes</h1>
+      <ul>
+      {notes.map(note => <li>{note.content}</li>)}
+      </ul>
     </div>
   )
 }
+
 export default App
