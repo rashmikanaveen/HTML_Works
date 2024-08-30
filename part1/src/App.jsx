@@ -42,7 +42,7 @@ const App = (props) => {
           <Note key={note.id} note={note} />
         )}
       </ul>
-          
+          Hi
     </div>
   )
 }
