@@ -1,14 +1,15 @@
-const App = (props) => {
-  const { notes } = props
-  
+import Note  from './components/Note'
+
+
+
+const App = () => {
+  console.log("hi_3")
   return (
     <div>
-      <h1>Notes</h1>
-      <ul>
-      {notes.map(note => <li>{note.content}</li>)}
-      </ul>
+      <Note />
+      
     </div>
-  )
+  );
 }
 
 export default App
