@@ -1,0 +1,20 @@
+<html>
+    <head>
+    <script type="text/javascript">
+    function validate() {
+    var credits=document.getElementById("credits").value;
+    if (isNaN(credits)|| credits<=0 || credits>=16) {
+    alert("Credits must be a number greater than 0 and less than 16");
+    return false
+    }
+    }
+    </script>
+    </head>
+    <body>
+    <form action="createCourse" onsubmit="return validate()">
+    Title: <input type="text" id="title" size="20"><br />
+    Credits: <input type="text" id="credits" size="2"><br />
+    <input type="submit" value="Submit">
+    </form>
+    </body>
+    </html>
