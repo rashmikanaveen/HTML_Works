@@ -24,6 +24,17 @@
       "id": "5",
       "content": "My new note",
       "important": false
+    },
+    {
+      "id": "6",
+      "content": "My name is rashmika",
+      "important": false
+    },
+    {
+      "id": "7",
+      "content": "Hi ",
+      "important": true
     }
+    
   ]
 }
