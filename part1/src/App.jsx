@@ -5,20 +5,22 @@ import axios from 'axios'
 const App = () => {
   const [notes, setNotes] = useState([])
 
-  const [newNote, setNewNote] = useState('a new note...')
+  const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
 
-  useEffect(() => {
+  const hook = () => {
     console.log('effect')
+    axios
+      .get('http://localhost:3001/notes')
+      .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+      })
+  }
   
-    const eventHandler = response => {
-      console.log('promise fulfilled')
-      setNotes(response.data)
-    }
-  
-    const promise = axios.get('http://localhost:3001/notes')
-    promise.then(eventHandler)
-  }, [])
+  useEffect(hook, [])
+
+  console.log('render', notes.length, 'notes')
   
 
   const handleNoteChange = (event) => {
@@ -38,9 +40,21 @@ const App = () => {
       important: Math.random() < 0.5,
       id: String(notes.length + 1),
     }
+
+    axios
+    .post('http://localhost:3001/notes', noteObject)
+    .then(response => {
+      console.log(response)
+    })
+    
+    
   
     setNotes(notes.concat(noteObject))
     setNewNote('')
+
+    
+
+    
   }
 
   return (
@@ -57,6 +71,16 @@ const App = () => {
         )}
       </ul>
           Hi
+      <div>
+        <form onSubmit={addNote}>
+          <input 
+            value={newNote}
+            onChange={handleNoteChange}
+            placeholder='a new note...'
+          />
+          <button type="submit">save</button>
+        </form>
+      </div>
     </div>
   )
 }
