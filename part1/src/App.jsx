@@ -84,7 +84,7 @@ const App = () => {
           />
         )}
       </ul>
-          Add new Note here
+          Add new Note here---
       <div>
         <form onSubmit={addNote}>
           <input 
