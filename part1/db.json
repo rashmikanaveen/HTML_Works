@@ -3,7 +3,7 @@
     {
       "id": "1",
       "content": "HTML is easy",
-      "important": true
+      "important": false
     },
     {
       "id": "2",
@@ -21,14 +21,9 @@
       "important": false
     },
     {
-      "id": "11d8",
+      "id": "ca42",
       "content": "rashmika",
-      "important": true
-    },
-    {
-      "id": "e3aa",
-      "content": "s",
-      "important": true
+      "important": false
     }
   ]
 }
