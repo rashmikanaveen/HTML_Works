@@ -9,6 +9,8 @@ function App() {
   const[Country, setCountry] = useState('');
   const[wage, setWage] = useState(0);
   const[Position, setPosition] = useState('');
+  const[employeelist, setEmployeelist] = useState([]);
+
 
   const addEmployee=()=>{
     console.log(name)
@@ -48,6 +50,10 @@ const displayName=()=>{
         </form>
 
         _______________________________________________________________________________________________________________________________________________________________________________________________________________
+
+        <div className='Employees'>
+        <button>Show Employees</button>
+        </div>
     </div>
   );
 }
