@@ -10,6 +10,21 @@ function App() {
   const[wage, setWage] = useState(0);
   const[Position, setPosition] = useState('');
 
+  const addEmployee=()=>{
+    console.log(name)
+    axios.post('http://localhost:3001/create',{
+      name:name,
+      age:Age,
+      country:Country,
+      position:Position,
+      wage:wage
+      
+    }).then(()=>{
+      console.log('success');
+    })
+
+  }
+
 
 const displayName=()=>{
   console.log(name+Age+Country+wage+Position);
@@ -29,8 +44,10 @@ const displayName=()=>{
         <input type='text' onChange={(event)=>{setCountry(event.target.value)}} required></input>
         <label>Wage(year):</label>
         <input type='number' onChange={(event)=>{setWage(event.target.value)}} required></input>
-        <button >Add Employee</button>
+        <button onClick={addEmployee}>Add Employee</button>
         </form>
+
+        _______________________________________________________________________________________________________________________________________________________________________________________________________________
     </div>
   );
 }
