@@ -5,7 +5,7 @@ import noteService from './services/notes'
 
 
 const Notification = ({ message }) => {
-  if (message === null) {
+  if (message === null  || message === '') {
     return null
   }
 
@@ -35,7 +35,7 @@ const App = () => {
 
   const [newNote, setNewNote] = useState('')
   const [showAll, setShowAll] = useState(true)
-  const [errorMessage, setErrorMessage] = useState('some error happened...')
+  const [errorMessage, setErrorMessage] = useState('')
 
   //const hook = () => {
   //  console.log('effect')

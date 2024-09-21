@@ -22,7 +22,23 @@ function App() {
       wage:wage
       
     }).then(()=>{
-      console.log('success');
+      setEmployeelist([...employeelist,{
+        name:name,
+        age:Age,
+        country:Country,
+        position:Position,
+        wage:wage
+        
+      }])
+    })
+
+  }
+
+  const getEmployees=()=>{
+    axios.get('http://localhost:3001/employees')
+    .then((response)=>{
+      setEmployeelist(response.data);
+      //console.log(response.data);
     })
 
   }
@@ -52,7 +68,21 @@ const displayName=()=>{
         _______________________________________________________________________________________________________________________________________________________________________________________________________________
 
         <div className='Employees'>
-        <button>Show Employees</button>
+        <button onClick={getEmployees}>Show Employees</button>
+        {employeelist.map((val,key)=>{
+
+          return(
+            <div className='employee'  key={key}>
+              <div>
+                <h3>Employee Name: {val.name}</h3>
+                <h3>Employee Age: {val.age}</h3>
+                <h3>Employee Country: {val.country}</h3>
+                <h3>Employee Position: {val.position}</h3>
+                <h3>Employee Wage: {val.wage}</h3>
+              </div>
+            </div>
+          )
+        })}
         </div>
     </div>
   );
