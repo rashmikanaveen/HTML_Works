@@ -47,18 +47,40 @@ const App = () => {
   //    })
   //}
   
+  
+
+  
   useEffect(() => {
-    noteService
-      .getAll()
-      .then(initialNotes  => {
-        setNotes(initialNotes )
-      })
-  }, [])
+    const fetchNotes = async () => {
+      try {
+        const initialNotes = await noteService.getAll();
+        setNotes(initialNotes);
+      } catch (error) {
+        console.error('Error fetching notes:', error);
+      }
+    };
+
+    fetchNotes();
+  }, []);
 
   if (!notes) { 
     return null 
   }
+  
+  /*
+  if (notes === null) {
+    return (
+      <div>
+        <p>server has issue</p>
+      </div>
+    )
 
+
+  }
+  */
+
+
+  
 
   console.log('render', notes.length, 'notes')
   
@@ -79,6 +101,7 @@ const App = () => {
         content: newNote,
         important: Math.random() > 0.5
       }
+      
   
       noteService
         .create(noteObject)

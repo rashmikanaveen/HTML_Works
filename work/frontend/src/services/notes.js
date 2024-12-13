@@ -13,6 +13,7 @@ const getAll = () => {
 
 const create = newObject => {
   const request = axios.post(baseUrl, newObject)
+  //console.log(newObject)
   return request.then(response => response.data)
 }
 
