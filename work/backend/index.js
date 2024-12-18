@@ -10,6 +10,49 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+
+const mongoose = require('mongoose')
+
+const password = process.argv[2]
+
+
+const url = process.env.MONGODB_URI;
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
+app.get('/api/notes', (request, response) => {
+  Note.find({}).then(notes => {
+    response.json(notes)
+  })
+})
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+/*
+
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(cors());
+app.use(express.json());
+
 let notes = [
   { id: 1, content: 'HTML is easy', important: true },
   { id: 2, content: 'Browser can execute only JavaScript', important: false },
@@ -43,3 +86,4 @@ app.post('/api/notes', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+*/
